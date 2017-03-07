@@ -1,0 +1,39 @@
+import java.util.*;
+public class Quicksort {
+	public static int a[]=new int[105];
+	public static int i,j,x,y;
+	public static void sort(int i,int j)
+	{
+		if(i>=j)
+			return;
+		int key=a[i];
+		x=i;
+		y=j;
+		while(x<y)
+		{
+			while(x<y&&a[y]>key)
+				y--;
+			a[x]=a[y];
+			while(x<y&&a[x]<key)
+				x++;
+			a[y]=a[x];
+		}
+		a[x]=key;
+		sort(i,x-1);
+		sort(x+1,j);
+		
+	}
+	public static void main(String args[])
+	{
+		System.out.println("请输入要排序的数组的个数，和数组");
+		Scanner input=new Scanner(System.in);
+		int n=input.nextInt();
+		for(int i=1;i<=n;i++)
+			a[i]=input.nextInt();
+		sort(1,n);
+		System.out.println("排序之后的数组");
+		for(int i=1;i<=n;i++)
+			System.out.printf("%d ",a[i]);
+		System.out.println("");	
+	}
+}
